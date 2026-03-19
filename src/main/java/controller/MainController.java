@@ -1,6 +1,6 @@
 package controller;
 
-import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
@@ -13,37 +13,39 @@ import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
 
-
-    @javafx.fxml.FXML
-    private Canvas canvasTree;
-    @javafx.fxml.FXML
-    private Slider sliderFactN;
-    @javafx.fxml.FXML
-    private Label lblFact;
-    @javafx.fxml.FXML
+    @FXML
     private Button btnFactCalc;
-    @javafx.fxml.FXML
+
+    @FXML
     private Button btnFactReset;
-    @javafx.fxml.FXML
+
+    @FXML
+    private Canvas canvasTree;
+
+    @FXML
     private Label lblComplexity;
-    @javafx.fxml.FXML
+
+    @FXML
+    private Label lblFact;
+
+    @FXML
     private Label lblFactCalls;
-    @javafx.fxml.FXML
-    private ListView listSteps;
-    @javafx.fxml.FXML
+
+    @FXML
     private Label lblFactResult;
-//Jav
+
+    @FXML
+    private ListView<?> listSteps;
+
+    @FXML
+    private Slider sliderFactN;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        setupFactTab();
     }
 
-    @Deprecated
-    public void calcularOnAction(ActionEvent actionEvent) {
-    }
+    private void setupFactTab() {
 
-    @Deprecated
-    public void limpiarOnAction(ActionEvent actionEvent) {
     }
 }

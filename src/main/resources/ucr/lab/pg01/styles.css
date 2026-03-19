@@ -383,4 +383,38 @@
 /* Efecto al pasar el mouse */
 .chart-bar:hover {
     -fx-bar-fill: derive(-fx-bar-fill, -20%);
+    .chart {
+        -fx-background-color: #F4F6FA;
+    }
+
+    .chart-plot-background {
+        -fx-background-color: #F4F6FA;
+    }
+
+    .default-color0.chart-bar {
+        -fx-bar-fill: #2E86C1;
+    }
+
+    .default-color1.chart-bar {
+        -fx-bar-fill: #1ABC9C;
+    }
+
+    .default-color2.chart-bar {
+        -fx-bar-fill: #E74C3C;
+    }
+
+    .chart-title {
+        -fx-text-fill: #0F235A;
+        -fx-font-size: 14px;
+        -fx-font-weight: bold;
+    }
+
+    .axis-label {
+        -fx-text-fill: #0F235A;
+        -fx-font-weight: bold;
+    }
+
+    .chart-legend {
+        -fx-background-color: transparent;
+    }
 }

@@ -5,16 +5,14 @@ import org.junit.jupiter.api.Test;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import static model.Recursion.fibonacci;
 import static model.Recursion.matryoshkaS;
-import static org.junit.jupiter.api.Assertions.*;
 
 class RecursionTest {
     @Test
     void factorialTest() {
         int n = 5;
         long t1 = System.nanoTime();
-        long result = Recursion.factorial(n);
+        long result = Recursion.factorial(n, counter);
         long t2 = System.nanoTime();
         System.out.println("tn: " + util.Utility.format(t2 - t1));
         System.out.println("\nFactorial de:" + n + " es: " + result);

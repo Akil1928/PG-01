@@ -10,8 +10,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Slider;
 import model.Recursion;
+import model.RecursionEngine;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -43,6 +45,14 @@ public class MainController implements Initializable {
     @FXML
     private Label lblFactN;
 
+
+    //atributos internnos de la calse controller
+
+
+    private final RecursionEngine engine = new RecursionEngine();
+    private RecursionEngine.CallNode lastRoot;
+    private List<RecursionEngine.CallNode> factBFS;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setupFactTab();
@@ -70,16 +80,23 @@ public class MainController implements Initializable {
 
     private void runFactorial() {
         int n = (int) sliderFactN.getValue();
-        AtomicInteger counter = new AtomicInteger(0);
-        long result = Recursion.factorial(n, counter);
-        lblFactResult.setText(util.Utility.format(result));
-        lblFactCalls.setText(String.valueOf(counter.get()));
+//        AtomicInteger counter = new AtomicInteger(0);
+//        long result = Recursion.factorial(n, counter);
+//        lblFactResult.setText(util.Utility.format(result));
+//        lblFactCalls.setText(String.valueOf(counter.get()));
+        engine.computeFactorial(n);
+        lastRoot = engine.getTreeRoot();
+
 
         ObservableList<String> items = FXCollections.observableArrayList();
         for (int i = 0; i <= n; i++) {
-            items.add(String.format("[%02d]", i+1));
+            RecursionEngine.Step step = engine.getSteps().get(i);
+            items.add(String.format("[%02d] %s", i + 1, step.description));
         }
+
         listSteps.setItems(items);
+        lblFactResult.setText(util.Utility.format(engine.getTreeRoot().result));
+        lblFactCalls.setText(String.valueOf(engine.getCallcaount()));
         lblComplexity.setText("0(n) = 0("+n+") llamadas");
 
     }

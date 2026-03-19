@@ -138,7 +138,7 @@
                                        <padding>
                                           <Insets left="10.0" />
                                        </padding></Label>
-                                    <Label fx:id="lblFact" styleClass="value-badge" text="5" />
+                                    <Label fx:id="lblFactN" styleClass="value-badge" text="5" />
                                  </children>
                               </HBox>
                               <Slider fx:id="sliderFactN" showTickMarks="true">

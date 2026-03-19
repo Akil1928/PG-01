@@ -1,7 +1,6 @@
 package controller;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
@@ -28,9 +27,6 @@ public class MainController implements Initializable {
     private Label lblComplexity;
 
     @FXML
-    private Label lblFact;
-
-    @FXML
     private Label lblFactCalls;
 
     @FXML
@@ -41,6 +37,8 @@ public class MainController implements Initializable {
 
     @FXML
     private Slider sliderFactN;
+    @FXML
+    private Label lblFactN;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -48,18 +46,22 @@ public class MainController implements Initializable {
     }
 
     private void setupFactTab() {
-sliderFactN.setMin(1);sliderFactN.setMax(12);sliderFactN.setValue(5);
-sliderFactN.setMajorTickUnit(1);sliderFactN.setSnapToTicks(true);
-sliderFactN.valueProperty().addListener((observable, oldValue, newValue) -> {
-    lblFact.setText(String.valueOf(newValue));
-});
-btnFactCalc.setOnAction(e -> runFactorial());
-btnFactReset.setOnAction(e -> resetFactorial());
+        sliderFactN.setMin(1); sliderFactN.setMax(12); sliderFactN.setValue(5);
+        sliderFactN.setMajorTickUnit(1); sliderFactN.setSnapToTicks(true);
+        sliderFactN.valueProperty().addListener((observable, oldValue, newValue) -> {
+            lblFactN.setText(String.valueOf(newValue.intValue()));
+        });
+        btnFactCalc.setOnAction(event -> runFactorial());
+        btnFactReset.setOnAction(e -> resetFactTab());
     }
-
-    private void resetFactorial() {
+    private void resetFactTab() {
+        lblFactResult.setText("-");
+        lblFactCalls.setText("-");
+        lblComplexity.setText("-");
+        listSteps.getItems().clear();
     }
-
     private void runFactorial() {
+
     }
+
 }

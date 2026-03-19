@@ -62,6 +62,6 @@ public class MainController implements Initializable {
     }
     private void runFactorial() {
 
-    }
+    }//aki
 
 }

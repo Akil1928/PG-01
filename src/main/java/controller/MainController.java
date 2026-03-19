@@ -1,5 +1,7 @@
 package controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
@@ -46,6 +48,18 @@ public class MainController implements Initializable {
     }
 
     private void setupFactTab() {
+sliderFactN.setMin(1);sliderFactN.setMax(12);sliderFactN.setValue(5);
+sliderFactN.setMajorTickUnit(1);sliderFactN.setSnapToTicks(true);
+sliderFactN.valueProperty().addListener((observable, oldValue, newValue) -> {
+    lblFact.setText(String.valueOf(newValue));
+});
+btnFactCalc.setOnAction(e -> runFactorial());
+btnFactReset.setOnAction(e -> resetFactorial());
+    }
 
+    private void resetFactorial() {
+    }
+
+    private void runFactorial() {
     }
 }

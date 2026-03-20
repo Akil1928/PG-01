@@ -43,7 +43,6 @@ public class Recursion {
 
     //Fibonacci con memoizacion
     public static long fibMemo(int n, Map<Integer, Long> memo, AtomicInteger counter) {
-
         if (n <= 1) return n;
         if (memo.containsKey(n)) {
             return memo.get(n);
@@ -65,5 +64,21 @@ public class Recursion {
         return memo[n];
     }
 
+    public static int sumDigitsRecursive(int n) {
+        n = Math.abs(n);
 
+        if (n < 10) {
+            return n;
+        }
+
+        return (n % 10) + sumDigitsRecursive(n / 10);
+    }
+//Necesario para el StackOverFlow del punto 4,
+    public static Integer safeSumDigitsRecursive(int n) {
+        try {
+            return sumDigitsRecursive(n);
+        } catch (StackOverflowError e) {
+            return null;
+        }
+    }
 }

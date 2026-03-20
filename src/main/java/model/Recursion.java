@@ -43,10 +43,12 @@ public class Recursion {
 
     //Fibonacci con memoizacion
     public static long fibMemo(int n, Map<Integer, Long> memo, AtomicInteger counter) {
-        counter.incrementAndGet();//Contar cada llamada recursiva
 
         if (n <= 1) return n;
-        if (memo.containsKey(n)) return memo.get(n);
+        if (memo.containsKey(n)) {
+            return memo.get(n);
+        }
+        counter.incrementAndGet(); //solo cuando hay trabajo real
         long result = fibMemo(n - 1, memo, counter) + fibMemo(n - 2, memo, counter);
         memo.put(n, result);
         return result;
@@ -54,11 +56,11 @@ public class Recursion {
 
     //fibonacci con arreglos
     public static long fibMemoArray(int n, long[] memo, AtomicInteger counter) {
-        counter.incrementAndGet();//Contar cada llamada recursiva
-
-        if (n <= 1) return n
-                ;
-        if (memo[n] != 0) return memo[n];
+        if (n <= 1) return n;
+        if (memo[n] != 0) {
+            return memo[n];
+        }
+        counter.incrementAndGet(); //solo cuando hay cálculo real
         memo[n] = fibMemoArray(n - 1, memo, counter) + fibMemoArray(n - 2, memo, counter);
         return memo[n];
     }

@@ -13,10 +13,16 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class HelloApplication extends Application {
+
     @Override
     public void start(Stage stage) throws IOException {
-        start1(stage);
-        start2(stage);
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("main.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 1100, 720);
+        scene.getStylesheets().add(
+                HelloApplication.class.getResource("styles.css").toExternalForm()
+        );
+        stage.setScene(scene);
+        stage.show();
     }
 
     private void start2(Stage stage) throws IOException {
@@ -52,5 +58,4 @@ public class HelloApplication extends Application {
         result.setText("0(n):"+ util.Utility.format(t2-t1) +" ns");
 
     }
-
 }

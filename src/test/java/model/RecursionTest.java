@@ -8,15 +8,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 import static model.Recursion.matryoshkaS;
 
 class RecursionTest {
-    @Test
-    void factorialTest() {
-        int n = 5;
-        long t1 = System.nanoTime();
-        long result = Recursion.factorial(n, counter);
-        long t2 = System.nanoTime();
-        System.out.println("tn: " + util.Utility.format(t2 - t1));
-        System.out.println("\nFactorial de:" + n + " es: " + result);
-    }
 
     @Test
     void matryoskaTest() {
